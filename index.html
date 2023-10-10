@@ -5,12 +5,45 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <style>
+    .chart-container {
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #e9e9e9;
+      border-radius: 5px;
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="map"></div>
-  <div id="lineChart"></div>
-  <div id="areaChart"></div>
+  <h1>Data Visualization of Internet and Cellular Usage</h1>
+  <p>This visualization provides insights into internet and cellular usage across various countries from 1980 to 2020.
+  </p>
+
+  <div class="chart-container">
+    <h2>Internet Users by Country</h2>
+    <div id="map"></div>
+  </div>
+
+  <div class="chart-container">
+    <h2>Growth of Cellular Subscription Over Time</h2>
+    <p>This area chart showcases the evolution of cellular subscriptions over time, shedding light on the proliferation
+      of mobile technology.</p>
+    <div id="areaChart"></div>
+  </div>
+
+  <div class="chart-container">
+    <h2>Internet Users Over Time in Selected Country</h2>
+    <p>This line chart elucidates the trend of internet user percentages over the years, offering insights into internet
+      adoption rates in the selected country.</p>
+    <div id="lineChart"></div>
+  </div>
+
   <script>
     const mapSpec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -18,7 +51,7 @@
       "width": 1000,
       "height": 500,
       "data": {
-        "url": "https://raw.githubusercontent.com/HanselLiebrata/Week-9-Homework/master/data/Final.csv"
+        "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Final.csv"
       },
       "selection": {
         "yearSlider": {
@@ -39,7 +72,7 @@
           "lookup": "Entity",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/HanselLiebrata/Week-9-Homework/master/js/ne_110m.json",
+              "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/js/ne_110m.json",
               "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
             },
             "key": "properties.NAME"
