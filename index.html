@@ -8,7 +8,12 @@
 </head>
 
 <body>
-  <div id="vis" />
+  <div id="vis1" />
+  </div>
+  <div id="vis2" />
+  </div>
+  <div id="vis3" />
+  </div>
   <script>
     const spec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -54,7 +59,7 @@
             "color": {
               "field": "Internet Users(%)",
               "type": "quantitative",
-              "scale": {  
+              "scale": {
                 "scheme": "blues",
                 "domain": [0, 100]
               }
@@ -68,9 +73,43 @@
       ],
       "config": {}
     };
-    vegaEmbed("#vis", spec, { mode: "vega-lite" }).then(console.log).catch(console.warn);
-    
-    
+    vegaEmbed("#vis1", spec, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+    const multiLine =
+    {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
+      "title": "Digital Trajectories: Regional/Country-wise internet usage from 1980-2020",
+      "mark": "line",
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "title": "Year"
+        },
+        "y": { "aggregate": "average", "field": "Internet Users(%)", "type": "quantitative", "title": "Average Internet Users(%)" },
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "title": "Region"
+        }
+      }
+    }
+    vegaEmbed("#vis2", multiLine, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+
+    const areaChart =
+    {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
+      "mark": "area",
+      "encoding": {
+        "x": { "field": "Year", "type": "temporal", "title": "Year" },
+        "y": { "aggregate": "average", "field": "Broadband Subscription", "type": "quantitative", "stack": "zero", "title": "Average Broadband Subscription" },
+        "color": { "field": "region", "type": "nominal", "title": "Region" }
+      }
+    }
+
+    vegaEmbed("#vis3", areaChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+
   </script>
 </body>
 
