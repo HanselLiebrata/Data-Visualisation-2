@@ -1,11 +1,32 @@
 #choropleth_map {
-	top:100px;
-	bottom: 100px; 
+	top: 100px;
+	bottom: 100px;
 	left: 100px;
 	right: 100px;
 	/*height: 1000px;
 	width: 800px;*/
 }
-#vg-tooltip-element table tr td.key{
-	min-width: 200px;
+
+.vg-tooltip {
+	min-width: 300px;
+}
+
+#vg-tooltip-element table {
+	width: 100%;
+}
+
+.vega-embed summary {
+	visibility: hidden;
+}
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 20px;
+	padding: 20px;
+}
+
+.vis {
+	border: 1px solid #d3d3d3;
+	padding: 20px;
+	border-radius: 10px;
 }

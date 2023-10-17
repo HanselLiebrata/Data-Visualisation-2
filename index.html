@@ -5,15 +5,17 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 </head>
 
 <body>
-  <div id="vis1" />
-  </div>
-  <div id="vis2" />
-  </div>
-  <div id="vis3" />
-  </div>
+  <div class="vis-container" id="vis1"></div>
+  <div class="vis-container" id="vis2"></div>
+  <div class="vis-container" id="vis3"></div>
+  <div class="vis-container" id="vis4"></div>
+  <div class="vis-container" id="vis5"></div>
+  <div class="vis-container" id="vis6"></div>
+
   <script>
     const spec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -90,8 +92,14 @@
         "color": {
           "field": "region",
           "type": "nominal",
-          "title": "Region"
-        }
+          "title": "Region",
+          "scale": {
+            "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
+            "range": ["#377EB8", "#FF7F00", "#4DAF4A", "#F781BF", "#A65628"]
+          }
+        },
+
+
       }
     }
     vegaEmbed("#vis2", multiLine, { mode: "vega-lite" }).then(console.log).catch(console.warn);
@@ -103,13 +111,131 @@
       "mark": "area",
       "encoding": {
         "x": { "field": "Year", "type": "temporal", "title": "Year" },
-        "y": { "aggregate": "average", "field": "Broadband Subscription", "type": "quantitative", "stack": "zero", "title": "Average Broadband Subscription" },
-        "color": { "field": "region", "type": "nominal", "title": "Region" }
+        "y": { "aggregate": "average", "field": "Broadband Subscription", "type": "quantitative", "stack": "zero", "title": "Average Broadband Subscription/100 People" },
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "title": "Region",
+          "scale": {
+            "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
+            "range": ["#377EB8", "#FF7F00", "#4DAF4A", "#F781BF", "#A65628"]
+          }
+        },
+        "tooltip": [
+          { "field": "Year", "type": "temporal", "title": "Year" },
+          { "aggregate": "average", "field": "Broadband Subscription", "type": "quantitative", "title": "Average Broadband Subs/100 People" },
+          { "field": "region", "type": "nominal", "title": "Region" }
+        ]
+
       }
     }
 
     vegaEmbed("#vis3", areaChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
 
+    const barChart =
+    {
+      "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
+      "transform": [
+        {
+          "filter": "datum.Year === 2020"
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "aggregate": "average",
+          "field": "Broadband Subscription",
+          "type": "quantitative",
+          "title": "Average Broadband Subscription"
+        },
+        "y": {
+          "field": "region",
+          "type": "nominal",
+          "title": "Region",
+          "sort": "-x",
+        },
+        "tooltip": [
+          { "field": "Year", "type": "temporal", "title": "Year" },
+          { "aggregate": "average", "field": "Broadband Subscription", "type": "quantitative", "title": "Average Broadband Subs/100 People" },
+          { "field": "region", "type": "nominal", "title": "Region" }
+        ]
+      },
+      "title": "Connectivity Champions: Regional broadband subscription rates in 2020."
+    }
+    vegaEmbed("#vis4", barChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+
+    const pieChart =
+    {
+      "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
+      "mark": "arc",
+      "encoding": {
+        "theta": {
+          "aggregate": "average",
+          "field": "Cellular Subscription",
+          "type": "quantitative",
+          "stack": true
+        },
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "title": "Region",
+          "scale": {
+            "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
+            "range": ["#377EB8", "#FF7F00", "#4DAF4A", "#F781BF", "#A65628"]
+          }
+
+        }
+      },
+      "view": { "stroke": null },
+      "title": "Rings of Connection: Regional mobile subscriptions per 100 people in 2020."
+    }
+
+    vegaEmbed("#vis5", pieChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+
+    const multiLine2 =
+    {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "data": {
+        "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "No. of Internet Users": "number"
+          }
+        }
+      },
+      "title": "Digital Trajectories: Global average from 1980-2020",
+      "layer": [
+        {
+          "mark": "line",
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "temporal",
+              "Title": "Year"
+            },
+            "y": { "aggregate": "average", "field": "Broadband Subscription", "type": "quantitative", "title": "Average Subscription per 100 people" },
+            "color": { "value": "#FFFF33" } // Color for Broadband Subscription line
+          }
+        },
+        {
+          "mark": "line",
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "temporal"
+            },
+            "y": { "aggregate": "average", "field": "Cellular Subscription", "type": "quantitative" },
+            "color": { "value": "#984EA3" } // Color for Cellular Subscription line
+          }
+        }
+      ]
+    }
+
+
+
+
+    vegaEmbed("#vis6", multiLine2, { mode: "vega-lite" }).then(console.log).catch(console.warn);
   </script>
 </body>
 

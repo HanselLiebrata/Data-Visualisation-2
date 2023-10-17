@@ -1,4 +1,4 @@
-Unnamed: 0,Entity,Code,Year,Cellular Subscription,Internet Users(%),No. of Internet Users,Broadband Subscription,country-code,region,sub-region
+,Entity,Code,Year,Cellular_Subscription,Internet_Users(%),No_of_Internet_Users,Broadband_Subscription,country-code,region,sub-region
 0,Afghanistan,AFG,1980,0.0,0.0,0,0.0,AFG,Asia,Southern Asia
 1,Afghanistan,AFG,1981,0.0,0.0,0,0.0,AFG,Asia,Southern Asia
 2,Afghanistan,AFG,1982,0.0,0.0,0,0.0,AFG,Asia,Southern Asia
