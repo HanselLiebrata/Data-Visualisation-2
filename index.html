@@ -211,7 +211,7 @@
   const multiLine =
   {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 300,
+    "width": 400,
     "height": 300,
     "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
     "title": "Regional Internet Usage From 1980-2020",
@@ -244,7 +244,7 @@
 
   const barChart = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 350,
+    "width": 400,
     "height": 300,
     "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
 
@@ -282,94 +282,98 @@
   vegaEmbed("#vis4", barChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
 
 
-  const pieChart =
-  {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 400,
-    "data": {
-      "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv"
+  const pieChart = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.Year === '2020'"
     },
-    "transform": [
-      {
-        "filter": "datum.Year === '2020'"
-      },
-      {
-        "aggregate": [
-          {
-            "op": "average",
-            "field": "Cellular_Subscription",
-            "as": "avgCellular"
-          }
-        ],
-        "groupby": ["region"]
-      },
-      {
-        "window": [
-          {
-            "op": "sum",
-            "field": "avgCellular",
-            "as": "totalCellular"
-          }
-        ],
-        "frame": [null, null]
-      },
-      {
-        "calculate": "(datum.avgCellular / datum.totalCellular) * 100",
-        "as": "percentageCellular"
-      }
-    ],
-    "encoding": {
-      "theta": {
-        "field": "avgCellular",
-        "type": "quantitative",
-        "stack": true
-      },
-      "color": {
-        "field": "region",
-        "type": "nominal",
-        "legend": null,
-        "scale": {
-          "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
-          "range": ["#377EB8", "#FF7F00", "#4DAF4A", "#F781BF", "#A65628"]
+    {
+      "aggregate": [
+        {
+          "op": "average",
+          "field": "Cellular_Subscription",
+          "as": "avgCellular"
         }
+      ],
+      "groupby": ["region"]
+    },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "avgCellular",
+          "as": "totalCellular"
+        }
+      ],
+      "frame": [null, null]
+    },
+    {
+      "calculate": "(datum.avgCellular / datum.totalCellular) * 100",
+      "as": "percentageCellular"
+    },
+    {
+      "calculate": "datum.region + ': ' + format(datum.percentageCellular, '.2f') + '%'",
+      "as": "regionPercentage"
+    }
+  ],
+  "encoding": {
+    "theta": {
+      "field": "avgCellular",
+      "type": "quantitative",
+      "stack": true
+    },
+    "color": {
+      "field": "region",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
+        "range": ["#377EB8", "#FF7F00", "#4DAF4A", "#F781BF", "#A65628"]
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": { "type": "arc", "outerRadius": 120 },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "percentageCellular",
+            "type": "quantitative",
+            "format": ".2f",
+            "title": "Average Cellular Subscription (%)"
+          },
+          {
+            "field": "region",
+            "type": "nominal",
+            "title": "Region"
+          }
+        ]
       }
     },
-    "layer": [
-      {
-        "mark": { "type": "arc", "outerRadius": 120 },
-        "encoding": {
-          "tooltip": [
-            {
-              "field": "percentageCellular",
-              "type": "quantitative",
-              "format": ".2f",
-              "title": "Average Cellular Subscription (%)"
-            },
-            {
-              "field": "region",
-              "type": "nominal",
-              "title": "Region"
-            }
-          ]
-        }
-      },
-      {
-        "mark": { "type": "text", "radius": 145 },
-        "encoding": {
-          "text": { "field": "region", "type": "nominal" }
-        }
+    {
+      "mark": { "type": "text", "radius": 165 },
+      "encoding": {
+        "text": { "field": "regionPercentage", "type": "nominal" },
+        
       }
-    ],
-    "view": { "stroke": null },
-    "title": "Rings of Connection: Regional Mobile Subscriptions per 100 People in 2020."
-  }
+    }
+  ],
+  "view": { "stroke": null },
+  "title": "Rings of Connection: Regional Mobile Subscriptions per 100 People in 2020."
+}
+
 
   vegaEmbed("#vis5", pieChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
 
 
   const multiLine2 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 350,
+    "width": 390,
     "height": 300,
     "data": {
       "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv",
@@ -429,7 +433,7 @@
         "transform": [{
           "calculate": "'Cellular Subscription'", "as": "type"
         }]
-      }
+      },
     ]
   }
 
