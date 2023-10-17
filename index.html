@@ -2,241 +2,442 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+    integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 </head>
 
-<body>
-  <div class="vis-container" id="vis1"></div>
-  <div class="vis-container" id="vis2"></div>
-  <div class="vis-container" id="vis3"></div>
-  <div class="vis-container" id="vis4"></div>
-  <div class="vis-container" id="vis5"></div>
-  <div class="vis-container" id="vis6"></div>
 
-  <script>
-    const spec = {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "Percentage of Internet Users by Country in 2020",
-      "width": 1000,
-      "height": 500,
-      "data": {
-        "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/js/ne_110m.json",
-        "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
+<!-- Title -->
+<br>
+<div class="pure-g centered-content box-shadow title-section">
+  <div class="pure-u-1 pure-u-md-1-2">
+    <h1>EVOLUTION OF INTERNET ACCESSIBILITY AND USAGE (1980-2020)</h1>
+    <h3>Four Decades of Digital Transformation: From Novelty to Necessity</h3>
+    <p class="titleDesc"><b>Over the past four decades, the internet has transformed from a novelty to an essential tool
+      for communication,
+      work, education, and entertainment. This choropleth map visualizes the growth and spread of internet usage across
+      different countries from 1980 to 2020.</b></p>
+  </div>
+
+</div>
+<br>
+
+<div class="pure-g centered-content box-shadow">
+  <div class="pure-u-1 pure-u-md-1-2">
+    <div id="vis1"></div>
+  </div>
+  <div class="pure-u-1 pure-u-md-1-2">
+    <P>The choropleth visualization, based on 2020 data, provides a revealing perspective on global internet adoption
+      patterns. Developed nations continue to exhibit high rates of internet usage, a testament to their advanced
+      digital infrastructure and accessibility. However, stark disparities are evident, particularly in specific regions
+      of Africa and Asia. These disparities emphasize significant opportunities for growth and the pressing need for
+      infrastructural enhancements in these areas. This persistent digital divide, as presented by the 2020 data,
+      underscores the imperative for concerted global initiatives aimed at bridging these gaps and ensuring equitable
+      internet access for all.</P>
+  </div>
+</div>
+<br>
+
+  <!-- Historical Evolution -->
+<div class="pure-g centered-content box-shadow sub title-section">
+  <div class="pure-u-1 pure-u-md-1-2">
+    <h2>Historical Evolution</h2>
+  </div>
+</div>
+<br>
+
+
+<div class="pure-g side-by-side box-shadow">
+  <div class="box-1">
+    <div id="vis2"></div>
+  </div>
+  <div class="box-2">
+    <p>
+      The historical evolution of internet usage from 1980-2020 offers a compelling narrative on global digital
+      transformation. Initially, the rates of internet adoption were modest across all regions, reflecting the nascent
+      stage of this technology. However, the turn of the century marked a pronounced surge, especially for Europe and
+      the Americas, aligning with rapid technological advancements and increased accessibility. Asia and Oceania too
+      observed substantial growth, albeit at a slightly deferred pace. Conversely, Africa's trajectory, while displaying
+      a positive incline in recent years, indicates a lag, emphasizing the challenges of infrastructural development and
+      accessibility in the continent. The trajectories underscore the transformative impact of the internet over four
+      decades while also highlighting the urgency to address regional disparities.</p>
+  </div>
+</div>
+<br>
+
+<div class="pure-g side-by-side box-shadow">
+  <div class="box-1">
+    <p>
+      The multi-line chart offers a contrasting perspective on the global average of broadband and cellular
+      subscriptions from 1980 to 2020. Broadband subscriptions display a meteoric rise starting from the early 2000s,
+      peaking close to universal adoption. This surge mirrors the global push towards high-speed internet connectivity,
+      emphasizing its role in socio-economic activities and digital inclusivity. In comparison, cellular subscriptions
+      showcase a more gradual and steady ascent, maintaining relevance but not achieving the same ubiquity as broadband.
+      The trajectories shed light on global preferences and accessibility, underscoring the strategic importance of
+      broadband as a primary means of digital communication and its potential implications for global connectivity
+      strategies in the future.</p>
+  </div>
+  <div class="box-2">
+    <div id="vis3"></div>
+  </div>
+</div>
+<br>
+
+  <!-- today's Mobile & Broadband Reach by Region -->
+<div class="pure-g centered-content box-shadow sub title-section">
+  <div class="pure-u-1 pure-u-md-1-2">
+    <h2>Today's Mobile & Broadband Reach by Region</h2>
+  </div>
+</div>
+<br>
+
+<div class="pure-g side-by-side box-shadow">
+  <div class="box-1">
+    <div id="vis4"></div>
+  </div>
+  <div class="box-2">
+    <p>
+      Drawing from the latest 2020 data and in comparison to our previous analysis on mobile subscriptions, Europe not
+      only leads in cellular connectivity but also dominates in regional broadband subscription rates. The average
+      broadband subscription in Europe is markedly higher than other regions, showcasing its advanced digital
+      infrastructure. On the other end, Africa, while having a significant mobile reach as seen in the pie chart, lags
+      in broadband connectivity. This juxtaposition between mobile and broadband data suggests that while mobile
+      connectivity might be widespread, the availability or affordability of broadband services is still a challenge in
+      certain regions. The contrast between Europe and Africa's broadband subscription rates underscores a persisting
+      digital divide, emphasizing the need for increased infrastructural development and potential policy interventions.
+    </p>
+  </div>
+</div>
+<br>
+
+<div class="pure-g side-by-side box-shadow">
+  <div class="box-1">
+    <p>
+      In the "Rings of Connection" pie chart illustrating regional mobile subscriptions per 100 people for the year
+      2020, the spread across continents offers a clear snapshot of mobile connectivity. Asia, representing a sizable
+      portion of the pie, showcases its vast population and its increasing embrace of mobile technology. Europe and the
+      Americas, with substantial segments, further underline the extensive adoption of mobile services in these regions.
+      Africa's presence, while smaller than Asia's, is still notable, reflecting the continent's push towards digital
+      inclusivity, despite its diverse challenges. Oceania, on the other hand, represents the smallest slice, which
+      could be attributed to its smaller population compared to the other continents. In sum, the chart highlights the
+      universality of mobile connectivity across the globe, underscoring its significance in our modern era.
+    </p>
+  </div>
+  <div class="box-2">
+    <div id="vis5"></div>
+  </div>
+</div>
+<br>
+
+<div class="pure-g centered-content box-shadow sub title-section">
+  <div class="pure-u-1 pure-u-md-1-2">
+    <p style="color: #ffffff;"><b style="color: #ffd000;">Created By:</b> Hansel Liebrata</p>
+    <p style="color: #ffd000;"><b>Data Provided By Kaggle:</b> <a href ="https://www.kaggle.com/datasets/ashishraut64/internet-users" style="color: #ffffff;">Global Internet
+        Users</a></p>
+  </div>
+</div>
+
+
+
+<script>
+  const spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 950,
+    "height": 500,
+    "data": {
+      "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/js/ne_110m.json",
+      "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
+    },
+    "projection": { "type": "equalEarth" },
+    "layer": [
+      {
+        "transform": [
+          {
+            "calculate": "'Data is not available for ' + datum.properties.NAME",
+            "as": "note"
+          }
+        ],
+        "mark": { "type": "geoshape", "fill": "lightgray", "stroke": "white" },
+        "encoding": {
+          "tooltip": { "field": "note", "type": "nominal" }
+        }
       },
-      "projection": { "type": "equalEarth" },
-      "layer": [
-        {
-          "transform": [
-            {
-              "calculate": "'Data is not available for ' + datum.properties.NAME",
-              "as": "note"
+      {
+        "transform": [
+          {
+            "lookup": "properties.NAME",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv"
+              },
+              "key": "Entity",
+              "fields": ["Internet_Users(%)", "Year"]
             }
-          ],
-          "mark": { "type": "geoshape", "fill": "lightgray", "stroke": "white" },
-          "encoding": {
-            "tooltip": { "field": "note", "type": "nominal" }
+          },
+          {
+            "filter": "datum.Year == 2020"
           }
-        },
-        {
-          "transform": [
-            {
-              "lookup": "properties.NAME",
-              "from": {
-                "data": {
-                  "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Final.csv"
-                },
-                "key": "Entity",
-                "fields": ["Internet Users(%)", "Year"]
-              }
+        ],
+        "mark": { "type": "geoshape", "stroke": "white" },
+        "encoding": {
+          "color": {
+            "field": "Internet_Users(%)",
+            "type": "quantitative",
+            "scale": {
+              "scheme": "blues",
+              "domain": [0, 100]
             },
-            {
-              "filter": "datum.Year == 2020"
-            }
-          ],
-          "mark": { "type": "geoshape", "stroke": "white" },
-          "encoding": {
-            "color": {
-              "field": "Internet Users(%)",
-              "type": "quantitative",
-              "scale": {
-                "scheme": "blues",
-                "domain": [0, 100]
-              }
-            },
-            "tooltip": [
-              { "field": "properties.NAME", "type": "nominal", "title": "Country" },
-              { "field": "Internet Users(%)", "type": "quantitative", "title": "Internet Users in 2020 (%)" }
-            ]
-          }
+            "title": "Internet Users(%)"
+          },
+          "tooltip": [
+            { "field": "properties.NAME", "type": "nominal", "title": "Country" },
+            { "field": "Internet_Users(%)", "type": "quantitative", "title": "Internet Users in 2020 (%)" }
+          ]
         }
-      ],
-      "config": {}
-    };
-    vegaEmbed("#vis1", spec, { mode: "vega-lite" }).then(console.log).catch(console.warn);
-    const multiLine =
-    {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
-      "title": "Digital Trajectories: Regional/Country-wise internet usage from 1980-2020",
-      "mark": "line",
-      "encoding": {
-        "x": {
-          "field": "Year",
-          "type": "temporal",
-          "title": "Year"
-        },
-        "y": { "aggregate": "average", "field": "Internet Users(%)", "type": "quantitative", "title": "Average Internet Users(%)" },
-        "color": {
-          "field": "region",
-          "type": "nominal",
-          "title": "Region",
-          "scale": {
-            "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
-            "range": ["#377EB8", "#FF7F00", "#4DAF4A", "#F781BF", "#A65628"]
-          }
-        },
-
-
       }
-    }
-    vegaEmbed("#vis2", multiLine, { mode: "vega-lite" }).then(console.log).catch(console.warn);
-
-    const areaChart =
-    {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
-      "mark": "area",
-      "encoding": {
-        "x": { "field": "Year", "type": "temporal", "title": "Year" },
-        "y": { "aggregate": "average", "field": "Broadband Subscription", "type": "quantitative", "stack": "zero", "title": "Average Broadband Subscription/100 People" },
-        "color": {
-          "field": "region",
-          "type": "nominal",
-          "title": "Region",
-          "scale": {
-            "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
-            "range": ["#377EB8", "#FF7F00", "#4DAF4A", "#F781BF", "#A65628"]
-          }
-        },
-        "tooltip": [
-          { "field": "Year", "type": "temporal", "title": "Year" },
-          { "aggregate": "average", "field": "Broadband Subscription", "type": "quantitative", "title": "Average Broadband Subs/100 People" },
-          { "field": "region", "type": "nominal", "title": "Region" }
-        ]
-
-      }
-    }
-
-    vegaEmbed("#vis3", areaChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
-
-    const barChart =
-    {
-      "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
-      "transform": [
-        {
-          "filter": "datum.Year === 2020"
-        }
-      ],
-      "mark": "bar",
-      "encoding": {
-        "x": {
-          "aggregate": "average",
-          "field": "Broadband Subscription",
-          "type": "quantitative",
-          "title": "Average Broadband Subscription"
-        },
-        "y": {
-          "field": "region",
-          "type": "nominal",
-          "title": "Region",
-          "sort": "-x",
-        },
-        "tooltip": [
-          { "field": "Year", "type": "temporal", "title": "Year" },
-          { "aggregate": "average", "field": "Broadband Subscription", "type": "quantitative", "title": "Average Broadband Subs/100 People" },
-          { "field": "region", "type": "nominal", "title": "Region" }
-        ]
+    ],
+    "config": {}
+  };
+  vegaEmbed("#vis1", spec, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+  const multiLine =
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 300,
+    "height": 300,
+    "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
+    "title": "Regional Internet Usage From 1980-2020",
+    "mark": "line",
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "temporal",
+        "title": "Year"
       },
-      "title": "Connectivity Champions: Regional broadband subscription rates in 2020."
-    }
-    vegaEmbed("#vis4", barChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
-
-    const pieChart =
-    {
-      "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
-      "mark": "arc",
-      "encoding": {
-        "theta": {
-          "aggregate": "average",
-          "field": "Cellular Subscription",
-          "type": "quantitative",
-          "stack": true
-        },
-        "color": {
-          "field": "region",
-          "type": "nominal",
-          "title": "Region",
-          "scale": {
-            "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
-            "range": ["#377EB8", "#FF7F00", "#4DAF4A", "#F781BF", "#A65628"]
-          }
-
+      "y": { "aggregate": "average", "field": "Internet_Users(%)", "type": "quantitative", "title": "Average Internet Users(%)" },
+      "color": {
+        "field": "region",
+        "type": "nominal",
+        "title": "Region",
+        "scale": {
+          "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
+          "range": ["#377EB8", "#FF7F00", "#4DAF4A", "#F781BF", "#A65628"]
         }
       },
-      "view": { "stroke": null },
-      "title": "Rings of Connection: Regional mobile subscriptions per 100 people in 2020."
-    }
-
-    vegaEmbed("#vis5", pieChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
-
-    const multiLine2 =
-    {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "data": {
-        "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv",
-        "format": {
-          "type": "csv",
-          "parse": {
-            "No. of Internet Users": "number"
-          }
-        }
-      },
-      "title": "Digital Trajectories: Global average from 1980-2020",
-      "layer": [
-        {
-          "mark": "line",
-          "encoding": {
-            "x": {
-              "field": "Year",
-              "type": "temporal",
-              "Title": "Year"
-            },
-            "y": { "aggregate": "average", "field": "Broadband Subscription", "type": "quantitative", "title": "Average Subscription per 100 people" },
-            "color": { "value": "#FFFF33" } // Color for Broadband Subscription line
-          }
-        },
-        {
-          "mark": "line",
-          "encoding": {
-            "x": {
-              "field": "Year",
-              "type": "temporal"
-            },
-            "y": { "aggregate": "average", "field": "Cellular Subscription", "type": "quantitative" },
-            "color": { "value": "#984EA3" } // Color for Cellular Subscription line
-          }
-        }
+      "tooltip": [
+        { "field": "Year", "type": "temporal", "timeUnit": "year", "title": "Year" },
+        { "aggregate": "average", "field": "Internet_Users(%)", "type": "quantitative", "title": "Average Internet Users(%)" },
+        { "field": "region", "type": "nominal", "title": "Region" }
       ]
+
     }
+  }
+  vegaEmbed("#vis2", multiLine, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+
+  const barChart = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 350,
+    "height": 300,
+    "data": { "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv" },
+
+    "transform": [
+      {
+        "filter": "datum.Year === '2020'"
+      }
+    ],
+
+    "mark": {
+      "type": "bar",
+      "color": "lightgray"  // Set bar color to light grey here
+    },
+    "encoding": {
+      "x": {
+        "aggregate": "average",
+        "field": "Broadband_Subscription",
+        "type": "quantitative",
+        "title": "Average Broadband Subscription per 100 People"
+      },
+      "y": {
+        "field": "region",
+        "type": "nominal",
+        "title": "Region",
+        "sort": "-x"
+      },
+      "tooltip": [
+        { "field": "region", "type": "nominal", "title": "Region" },
+        { "aggregate": "average", "field": "Broadband_Subscription", "type": "quantitative", "title": "Average Broadband Subs/100 People" }
+      ]
+    },
+    "title": "Connectivity Champions: Regional Broadband Subscription Rates in 2020."
+  }
+
+  vegaEmbed("#vis4", barChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+
+
+  const pieChart =
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv"
+    },
+    "transform": [
+      {
+        "filter": "datum.Year === '2020'"
+      },
+      {
+        "aggregate": [
+          {
+            "op": "average",
+            "field": "Cellular_Subscription",
+            "as": "avgCellular"
+          }
+        ],
+        "groupby": ["region"]
+      },
+      {
+        "window": [
+          {
+            "op": "sum",
+            "field": "avgCellular",
+            "as": "totalCellular"
+          }
+        ],
+        "frame": [null, null]
+      },
+      {
+        "calculate": "(datum.avgCellular / datum.totalCellular) * 100",
+        "as": "percentageCellular"
+      }
+    ],
+    "encoding": {
+      "theta": {
+        "field": "avgCellular",
+        "type": "quantitative",
+        "stack": true
+      },
+      "color": {
+        "field": "region",
+        "type": "nominal",
+        "legend": null,
+        "scale": {
+          "domain": ["Africa", "Americas", "Asia", "Europe", "Oceania"],
+          "range": ["#377EB8", "#FF7F00", "#4DAF4A", "#F781BF", "#A65628"]
+        }
+      }
+    },
+    "layer": [
+      {
+        "mark": { "type": "arc", "outerRadius": 120 },
+        "encoding": {
+          "tooltip": [
+            {
+              "field": "percentageCellular",
+              "type": "quantitative",
+              "format": ".2f",
+              "title": "Average Cellular Subscription (%)"
+            },
+            {
+              "field": "region",
+              "type": "nominal",
+              "title": "Region"
+            }
+          ]
+        }
+      },
+      {
+        "mark": { "type": "text", "radius": 145 },
+        "encoding": {
+          "text": { "field": "region", "type": "nominal" }
+        }
+      }
+    ],
+    "view": { "stroke": null },
+    "title": "Rings of Connection: Regional Mobile Subscriptions per 100 People in 2020."
+  }
+
+  vegaEmbed("#vis5", pieChart, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+
+
+  const multiLine2 = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 350,
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/HanselLiebrata/Data-Visualisation-2/master/data/Data%20with%20Continent.csv",
+    },
+    "title": "Global Average of Subscription from 1980-2020",
+    "layer": [
+      {
+        "mark": "line",
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "temporal",
+            "title": "Year"
+          },
+          "y": {
+            "aggregate": "average",
+            "field": "Broadband_Subscription",
+            "type": "quantitative",
+            "title": "Average Subscription per 100 people"
+          },
+          "color": {
+            "field": "type",
+            "type": "nominal",
+            "legend": { "title": "Subscription Type" },
+            "scale": {
+              "domain": ["Broadband Subscription", "Cellular Subscription"],
+              "range": ["#FFFF33", "#984EA3"]
+            }
+          }
+        },
+        "transform": [{
+          "calculate": "'Broadband Subscription'", "as": "type"
+        }]
+      },
+      {
+        "mark": "line",
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "temporal"
+          },
+          "y": { "aggregate": "average", "field": "Cellular_Subscription", "type": "quantitative" },
+          "tooltip": [
+            { "field": "Year", "type": "temporal", "timeUnit": "year", "title": "Year" },
+            { "aggregate": "average", "field": "Cellular_Subscription", "type": "quantitative", "title": "Avg Cellular Subscription per 100" },
+          ],
+          "color": {
+            "field": "type",
+            "type": "nominal",
+            "legend": { "title": "Subscription Type" },
+            "scale": {
+              "domain": ["Broadband Subscription", "Cellular Subscription"],
+              "range": ["#FFFF33", "#984EA3"]
+            }
+          }
+        },
+        "transform": [{
+          "calculate": "'Cellular Subscription'", "as": "type"
+        }]
+      }
+    ]
+  }
 
 
 
 
-    vegaEmbed("#vis6", multiLine2, { mode: "vega-lite" }).then(console.log).catch(console.warn);
-  </script>
+  vegaEmbed("#vis3", multiLine2, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+</script>
 </body>
 
 </html>
